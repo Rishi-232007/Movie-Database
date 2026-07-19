@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="movieApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Database</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body ng-controller="MovieController">
+
+<div class="overlay">
+
+    <h1>🎬 Movie Database</h1>
+
+    <input
+        type="text"
+        class="search-box"
+        placeholder="🔍 Search Movies..."
+        ng-model="searchMovie">
+
+    <div class="movies">
+
+        <div class="movie-card"
+             ng-repeat="movie in movies | filter:searchMovie">
+
+            <img ng-src="{{movie.image}}">
+
+            <div class="info">
+
+                <h2>{{movie.title}}</h2>
+
+                <p>📅 <b>Year:</b> {{movie.year}}</p>
+
+                <p>🎭 <b>Genre:</b> {{movie.genre}}</p>
+
+                <p>⭐ <b>Rating:</b> {{movie.rating}}</p>
+
+                <button ng-click="toggleFavorite(movie)">
+                    {{movie.favorite ? '❤️ Remove Favorite' : '🤍 Add Favorite'}}
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
